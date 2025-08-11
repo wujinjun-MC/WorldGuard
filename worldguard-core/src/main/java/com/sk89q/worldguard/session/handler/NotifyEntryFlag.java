@@ -65,7 +65,7 @@ public class NotifyEntryFlag extends FlagValueChangeHandler<Boolean> {
             regionList.append(region.getId());
         }
 
-        WorldGuard.getInstance().getPlatform().broadcastNotification(new Notify(player.getName(), " entered NOTIFY region: " + regionList).create());
+        WorldGuard.getInstance().getPlatform().broadcastNotification(new Notify(player.getName(), " 进入了提醒区域(设定 notify-enter 启用): " + regionList).create());
 
         return true;
     }
