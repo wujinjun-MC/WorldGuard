@@ -84,7 +84,7 @@ class FlagHelperBox extends PaginationBox {
     private boolean monoSpace;
 
     FlagHelperBox(World world, ProtectedRegion region, RegionPermissionModel perms) {
-        super("Flags for " + region.getId(), "/rg flags -w \"" + world.getName() + "\" -p %page% " + region.getId());
+        super("区域" + region.getId(), "设定， /rg flags -w \"" + world.getName() + "\" -p %page% " + region.getId());
         this.world = world;
         this.region = region;
         this.perms = perms;
@@ -93,7 +93,7 @@ class FlagHelperBox extends PaginationBox {
     @Override
     public Component getComponent(int number) {
         if (number == Flags.INBUILT_FLAGS.size()) {
-            return centerAndBorder(TextComponent.of("Third-Party Flags", TextColor.AQUA));
+            return centerAndBorder(TextComponent.of("第三方设定", TextColor.AQUA));
         } else if (number > Flags.INBUILT_FLAGS.size()) {
             number -= 1;
         }
@@ -121,13 +121,13 @@ class FlagHelperBox extends PaginationBox {
         if (flag.usesMembershipAsDefault()) {
             builder.append(TextComponent.empty().append(TextComponent.of("*", TextColor.AQUA))
                     .hoverEvent(HoverEvent.of(HoverEvent.Action.SHOW_TEXT,
-                            TextComponent.of("This is a special flag which defaults to allow for members, and deny for non-members"))));
+                            TextComponent.of("特殊设定，默认允许所有成员, 不允许非成员"))));
             length += monoSpace ? 1 : FlagFontInfo.getPxLength('*');
         }
         if (flag == Flags.PASSTHROUGH) {
             builder.append(TextComponent.empty().append(TextComponent.of("*", TextColor.AQUA))
                     .hoverEvent(HoverEvent.of(HoverEvent.Action.SHOW_TEXT,
-                            TextComponent.of("This is a special flag which overrides build checks. (Not movement related!)"))));
+                            TextComponent.of("特殊设定，覆盖建筑权限检查。(暂未加入!)"))));
             length += monoSpace ? 1 : FlagFontInfo.getPxLength('*');
         }
         int leftover = (monoSpace ? PAD_PX_SIZE / 3 : PAD_PX_SIZE) - length;
@@ -199,15 +199,15 @@ class FlagHelperBox extends PaginationBox {
             List<Component> hoverTexts = new ArrayList<>();
             if (maySet) {
                 if (isExplicitSet) {
-                    hoverTexts.add(TextComponent.of("Click to unset", TextColor.GOLD));
+                    hoverTexts.add(TextComponent.of("点击取消设定", TextColor.GOLD));
                 } else if (DANGER_ZONE.contains(flag) && !(ProtectedRegion.GLOBAL_REGION.equals(region.getId()) && flag == Flags.PASSTHROUGH)) {
-                    hoverTexts.add(TextComponent.of("Setting this flag may have unintended consequences.", TextColor.RED)
+                    hoverTexts.add(TextComponent.of("更改此设定会导致非预期情况", TextColor.RED)
                             .append(TextComponent.newline())
-                            .append(TextComponent.of("Please read the documentation and set this flag manually if you really intend to.")
+                            .append(TextComponent.of("请查阅文档，只在真正需要修改时设置")
                             .append(TextComponent.newline())
-                            .append(TextComponent.of("(Hint: You do not need to set this to protect the region!)"))));
+                            .append(TextComponent.of("(Hint: 你无需设置此项也可以保护当前区域!)"))));
                 } else {
-                    hoverTexts.add(TextComponent.of("Click to set", TextColor.GOLD));
+                    hoverTexts.add(TextComponent.of("点击设定", TextColor.GOLD));
                 }
             }
             Component valType = getToolTipHint(defVal, choice, inherited);
@@ -238,7 +238,7 @@ class FlagHelperBox extends PaginationBox {
         if (suggestChoice != null && perms.maySetFlag(region, flag)) {
             builder.append(TextComponent.of(suggestChoice, TextColor.DARK_GRAY)
                     .hoverEvent(HoverEvent.of(HoverEvent.Action.SHOW_TEXT,
-                            TextComponent.of("Click to set custom value", TextColor.GOLD)))
+                            TextComponent.of("自定义设置值", TextColor.GOLD)))
                     .clickEvent(ClickEvent.of(ClickEvent.Action.SUGGEST_COMMAND, makeCommand(flag, ""))));
         }
     }
@@ -266,9 +266,9 @@ class FlagHelperBox extends PaginationBox {
         List<Component> hoverTexts = new ArrayList<>();
         if (maySet) {
             if (isExplicitSet) {
-                hoverTexts.add(TextComponent.of("Click to change", TextColor.GOLD));
+                hoverTexts.add(TextComponent.of("点击修改", TextColor.GOLD));
             } else {
-                hoverTexts.add(TextComponent.of("Click to set", TextColor.GOLD));
+                hoverTexts.add(TextComponent.of("点击设置", TextColor.GOLD));
             }
         }
         Component valType = getToolTipHint(defVal, currVal, inherited);
@@ -319,19 +319,19 @@ class FlagHelperBox extends PaginationBox {
         Component valType;
         if (inherited) {
             if (currVal == defVal) {
-                valType = TextComponent.of("Inherited & ")
-                        .append(TextComponent.of("default")
+                valType = TextComponent.of("继承 & ")
+                        .append(TextComponent.of("默认")
                                 .decoration(TextDecoration.UNDERLINED, true))
-                        .append(TextComponent.of(" value"));
+                        .append(TextComponent.of(" 值"));
             } else {
-                valType = TextComponent.of("Inherited value");
+                valType = TextComponent.of("继承值");
             }
         } else {
             if (currVal == defVal) {
                 valType = TextComponent.empty()
-                        .append(TextComponent.of("Default")
+                        .append(TextComponent.of("默认")
                                 .decoration(TextDecoration.UNDERLINED, true))
-                        .append(TextComponent.of(" value"));
+                        .append(TextComponent.of(" 值"));
             } else {
                 valType = null;
             }
@@ -365,7 +365,7 @@ class FlagHelperBox extends PaginationBox {
                 : currVal.stream().map(String::valueOf).collect(Collectors.joining(","));
         TextComponent hoverComp = TextComponent.of("");
         if (currVal != null) {
-            hoverComp = hoverComp.append(TextComponent.of("Current values:"))
+            hoverComp = hoverComp.append(TextComponent.of("当前值:"))
                     .append(TextComponent.newline()).append(TextComponent.of(stringValue));
         }
         appendValueText(builder, flag, display, hoverComp);
@@ -390,13 +390,13 @@ class FlagHelperBox extends PaginationBox {
         if (currVal == null) {
             final Location defVal = flag.getDefault();
             if (defVal == null) {
-                appendValueText(builder, flag, "unset location", null);
+                appendValueText(builder, flag, "取消设定地点", null);
             } else {
-                appendValueText(builder, flag, defVal.toString(), TextComponent.of("Default value:")
+                appendValueText(builder, flag, defVal.toString(), TextComponent.of("默认值:")
                         .append(TextComponent.newline()).append(TextComponent.of(defVal.toString())));
             }
         } else {
-            appendValueText(builder, flag, currVal.toString(), TextComponent.of("Current value:")
+            appendValueText(builder, flag, currVal.toString(), TextComponent.of("当前值:")
                     .append(TextComponent.newline()).append(TextComponent.of(currVal.toString())));
         }
     }
@@ -419,7 +419,7 @@ class FlagHelperBox extends PaginationBox {
             choices.addAll(Arrays.asList(suggested));
         }
         //noinspection unchecked
-        appendValueChoices(builder, flag, (Iterator<V>) choices.iterator(), choices.isEmpty() ? "unset number" : "[custom]");
+        appendValueChoices(builder, flag, (Iterator<V>) choices.iterator(), choices.isEmpty() ? "清除数值" : "[自定义]");
     }
 
     private void appendStringFlagValue(TextComponent.Builder builder, StringFlag flag) {
@@ -430,7 +430,7 @@ class FlagHelperBox extends PaginationBox {
         if (currVal == null) {
             final String defVal = flag.getDefault();
             if (defVal == null) {
-                appendValueText(builder, flag, "unset string", null);
+                appendValueText(builder, flag, "清除字符串", null);
             } else {
                 final TextComponent defComp = LegacyComponentSerializer.INSTANCE.deserialize(defVal);
                 String display = reduceToText(defComp);
@@ -438,7 +438,7 @@ class FlagHelperBox extends PaginationBox {
                 if (display.length() > 23) {
                     display = display.substring(0, 20) + "...";
                 }
-                appendValueText(builder, flag, display, TextComponent.of("Default value:")
+                appendValueText(builder, flag, display, TextComponent.of("默认值:")
                         .append(TextComponent.newline()).append(defComp));
             }
         } else {
@@ -448,7 +448,7 @@ class FlagHelperBox extends PaginationBox {
             if (display.length() > 23) {
                 display = display.substring(0, 20) + "...";
             }
-            appendValueText(builder, flag, display, TextComponent.of("Current value:")
+            appendValueText(builder, flag, display, TextComponent.of("当前值:")
                     .append(TextComponent.newline()).append(currComp));
         }
     }

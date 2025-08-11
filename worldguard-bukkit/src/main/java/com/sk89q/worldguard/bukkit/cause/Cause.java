@@ -253,7 +253,7 @@ public final class Cause {
      */
     public static void trackParentCause(Metadatable target, Object parent) {
         if (target instanceof Block) {
-            throw new IllegalArgumentException("Can't track causes on Blocks because Cause doesn't check block metadata");
+            throw new IllegalArgumentException("无法追踪当前方块的原因，因为此原因不检查方块元数据");
         }
 
         WGMetadata.put(target, CAUSE_KEY, parent);
