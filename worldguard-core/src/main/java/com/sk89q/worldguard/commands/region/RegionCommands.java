@@ -1033,8 +1033,8 @@ public final class RegionCommands extends RegionCommandsBase {
                     "迁移完成！这仅迁移了数据。如果您已将设置更改为使用目标驱动程序，则 WorldGuard 现在将使用新数据。如果没有，则必须调整配置以使用新驱动程序，然后重新启动服务器。");
         } catch (MigrationException e) {
             log.log(Level.WARNING, "迁移失败", e);
-            throw new CommandException(" " + e.getMessage());
-        } finally {迁移时遇到错误:
+            throw new CommandException("迁移时遇到错误: " + e.getMessage());
+        } finally {
             if (minecraftLogger != null) {
                 minecraftLogger.removeHandler(handler);
             }
