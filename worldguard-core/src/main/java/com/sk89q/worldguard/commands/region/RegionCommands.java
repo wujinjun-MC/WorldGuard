@@ -107,7 +107,7 @@ public final class RegionCommands extends RegionCommandsBase {
             .append(TextComponent.of("⚠警告:", TextColor.RED, Sets.newHashSet(TextDecoration.BOLD)))
             .append(ErrorFormat.wrap(" 此设置与移动区域无关"))
             .append(TextComponent.newline())
-            .append(TextComponent.of("这会覆盖建筑权限检查. 如果你不清楚这代表着什么，查看 ")
+            .append(TextComponent.of("这会覆盖建筑权限检查. 如果你不清楚这代表着什么, 查看 ")
                     .append(TextComponent.of("[此文档页面]", TextColor.AQUA)
                             .clickEvent(ClickEvent.of(ClickEvent.Action.OPEN_URL,
                                     "https://worldguard.enginehub.org/en/latest/regions/flags/#overrides")))
@@ -119,7 +119,7 @@ public final class RegionCommands extends RegionCommandsBase {
             .append(TextComponent.of("更改此设置将完全覆盖默认保护, 并应用于" +
                     " 成员、非成员、活塞、重力方块 等所有可更改方块的事件"))
             .append(TextComponent.newline())
-            .append(TextComponent.of("如果你不清楚这代表着什么，查看 ")
+            .append(TextComponent.of("如果你不清楚这代表着什么, 查看 ")
                     .append(TextComponent.of("[此文档页面]", TextColor.AQUA)
                             .clickEvent(ClickEvent.of(ClickEvent.Action.OPEN_URL,
                                     "https://worldguard.enginehub.org/en/latest/regions/flags/#protection-related")))
@@ -168,7 +168,7 @@ public final class RegionCommands extends RegionCommandsBase {
                 .registerWithSupervisor(worldGuard.getSupervisor(), description)
                 .onSuccess((Component) null,
                         t -> {
-                            sender.print(String.format("新区域已创建，命名为 '%s'", region.getId()));
+                            sender.print(String.format("新区域已创建, 命名为 '%s'", region.getId()));
                             warnAboutDimensions(sender, region);
                             informNewUser(sender, manager, region);
                             checkSpawnOverlap(sender, world, region);
@@ -281,7 +281,7 @@ public final class RegionCommands extends RegionCommandsBase {
         if (existing != null) {
             if (!existing.getOwners().contains(player)) {
                 throw new CommandException(
-                        "这个区域已存在，并且你不拥有它");
+                        "这个区域已存在, 并且你不拥有它");
             }
         }
 
@@ -998,7 +998,7 @@ public final class RegionCommands extends RegionCommandsBase {
 
         if (!args.hasFlag('y')) {
             throw new CommandException("此命令存在潜在危险\n" +
-                    "请确保您已备份数据，然后重新输入命令并在末尾添加 -y 以继续。");
+                    "请确保您已备份数据, 然后重新输入命令并在末尾添加 -y 以继续。");
         }
 
         ConfigurationManager config = WorldGuard.getInstance().getPlatform().getGlobalStateManager();
@@ -1030,7 +1030,7 @@ public final class RegionCommands extends RegionCommandsBase {
             sender.print("正在进行迁移... 这可能需要一些时间");
             container.migrate(migration);
             sender.print(
-                    "迁移完成！这仅迁移了数据。如果您已将设置更改为使用目标驱动程序，则 WorldGuard 现在将使用新数据。如果没有，则必须调整配置以使用新驱动程序，然后重新启动服务器。");
+                    "迁移完成！这仅迁移了数据。如果您已将设置更改为使用目标驱动程序, 则 WorldGuard 现在将使用新数据。如果没有, 则必须调整配置以使用新驱动程序, 然后重新启动服务器。");
         } catch (MigrationException e) {
             log.log(Level.WARNING, "迁移失败", e);
             throw new CommandException("迁移时遇到错误: " + e.getMessage());
@@ -1096,7 +1096,7 @@ public final class RegionCommands extends RegionCommandsBase {
     @Command(aliases = {"migrateheights"},
             usage = "[world]", max = 1,
             flags = "yw:",
-            desc = "迁移区域，从旧的高度限制到新的高度限制")
+            desc = "迁移区域, 从旧的高度限制到新的高度限制")
     public void migrateHeights(CommandContext args, Actor sender) throws CommandException {
         // Check permissions
         if (!getPermissionModel(sender).mayMigrateRegionHeights()) {
@@ -1105,7 +1105,7 @@ public final class RegionCommands extends RegionCommandsBase {
 
         if (!args.hasFlag('y')) {
             throw new CommandException("此命令存在潜在危险\n" +
-                    "请确保您已备份数据，然后重新输入命令并在末尾添加 -y 以继续。");
+                    "请确保您已备份数据, 然后重新输入命令并在末尾添加 -y 以继续。");
         }
 
         World world = null;

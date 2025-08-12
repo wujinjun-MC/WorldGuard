@@ -84,7 +84,7 @@ class FlagHelperBox extends PaginationBox {
     private boolean monoSpace;
 
     FlagHelperBox(World world, ProtectedRegion region, RegionPermissionModel perms) {
-        super("区域" + region.getId(), "设定， /rg flags -w \"" + world.getName() + "\" -p %page% " + region.getId());
+        super("区域" + region.getId(), "设定,  /rg flags -w \"" + world.getName() + "\" -p %page% " + region.getId());
         this.world = world;
         this.region = region;
         this.perms = perms;
@@ -121,13 +121,13 @@ class FlagHelperBox extends PaginationBox {
         if (flag.usesMembershipAsDefault()) {
             builder.append(TextComponent.empty().append(TextComponent.of("*", TextColor.AQUA))
                     .hoverEvent(HoverEvent.of(HoverEvent.Action.SHOW_TEXT,
-                            TextComponent.of("特殊设定，默认允许所有成员, 不允许非成员"))));
+                            TextComponent.of("特殊设定, 默认允许所有成员, 不允许非成员"))));
             length += monoSpace ? 1 : FlagFontInfo.getPxLength('*');
         }
         if (flag == Flags.PASSTHROUGH) {
             builder.append(TextComponent.empty().append(TextComponent.of("*", TextColor.AQUA))
                     .hoverEvent(HoverEvent.of(HoverEvent.Action.SHOW_TEXT,
-                            TextComponent.of("特殊设定，覆盖建筑权限检查。(暂未加入!)"))));
+                            TextComponent.of("特殊设定, 覆盖建筑权限检查。(暂未加入!)"))));
             length += monoSpace ? 1 : FlagFontInfo.getPxLength('*');
         }
         int leftover = (monoSpace ? PAD_PX_SIZE / 3 : PAD_PX_SIZE) - length;
@@ -203,7 +203,7 @@ class FlagHelperBox extends PaginationBox {
                 } else if (DANGER_ZONE.contains(flag) && !(ProtectedRegion.GLOBAL_REGION.equals(region.getId()) && flag == Flags.PASSTHROUGH)) {
                     hoverTexts.add(TextComponent.of("更改此设定会导致非预期情况", TextColor.RED)
                             .append(TextComponent.newline())
-                            .append(TextComponent.of("请查阅文档，只在真正需要修改时设置")
+                            .append(TextComponent.of("请查阅文档, 只在真正需要修改时设置")
                             .append(TextComponent.newline())
                             .append(TextComponent.of("(Hint: 你无需设置此项也可以保护当前区域!)"))));
                 } else {

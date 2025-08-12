@@ -130,7 +130,7 @@ class RegionCommandsBase {
 
         if (!allowGlobal && id.equalsIgnoreCase("__global__")) { // Sorry, no global
             throw new CommandException(
-                    "抱歉，此处不能使用 __global__ 。");
+                    "抱歉, 此处不能使用 __global__ 。");
         }
 
         return id;
@@ -212,7 +212,7 @@ class RegionCommandsBase {
             }
             throw new CommandException(
                     "你不在任何区域。 " +
-                            "如需选择特定区域，请指定区域ID");
+                            "如需选择特定区域, 请指定区域ID");
         } else if (set.size() > 1) {
             boolean first = true;
 
@@ -268,8 +268,8 @@ class RegionCommandsBase {
      */
     protected static void checkRegionDoesNotExist(RegionManager manager, String id, boolean mayRedefine) throws CommandException {
         if (manager.hasRegion(id)) {
-            throw new CommandException("已有此区域，请换一个名字" +
-                    (mayRedefine ? " 要更改已有区域范围到当前选区，请使用 /region redefine " + id + " 。" : ""));
+            throw new CommandException("已有此区域, 请换一个名字" +
+                    (mayRedefine ? " 要更改已有区域范围到当前选区, 请使用 /region redefine " + id + " 。" : ""));
         }
     }
 
@@ -316,7 +316,7 @@ class RegionCommandsBase {
             BlockVector3 max = selection.getMaximumPoint();
             return new ProtectedCuboidRegion(id, min, max);
         } else {
-            throw new CommandException("抱歉，WorldGuard 区域只能使用长方体和多边形");
+            throw new CommandException("抱歉, WorldGuard 区域只能使用长方体和多边形");
         }
     }
 
@@ -334,7 +334,7 @@ class RegionCommandsBase {
                     .map(regionManager -> "'" + regionManager.getName() + "'").collect(Collectors.toList()));
 
             sender.print(TextComponent.of("(警告: 以下世界的区域数据后台保存失败: " + failingList + ". " +
-                    "您的更改将丢失。有关更多信息，请参阅服务器日志。)", TextColor.GOLD));
+                    "您的更改将丢失。有关更多信息, 请参阅服务器日志。)", TextColor.GOLD));
         }
     }
 
@@ -363,7 +363,7 @@ class RegionCommandsBase {
      */
     protected static void informNewUser(Actor sender, RegionManager manager, ProtectedRegion region) {
         if (manager.size() <= 2) {
-            sender.print(SubtleFormat.wrap("(当前区域已保护，防止其他人的修改。如不需要，请使用")
+            sender.print(SubtleFormat.wrap("(当前区域已保护, 防止其他人的修改。如不需要, 请使用")
                             .append(TextComponent.of("/rg flag " + region.getId() + " passthrough allow", TextColor.AQUA))
                             .append(TextComponent.of(")", TextColor.GRAY)));
         }
@@ -381,7 +381,7 @@ class RegionCommandsBase {
         if (spawn != null) {
             if (!spawn.getIntersectingRegions(ImmutableList.of(region)).isEmpty()) {
                 sender.print(ErrorFormat.wrap("⚠警告!")
-                        .append(TextComponent.of(" 当前区域为原版出生点保护。WorldGuard无法修改此行为，" +
+                        .append(TextComponent.of(" 当前区域为原版出生点保护。WorldGuard无法修改此行为, " +
                                 "只有OP才能修改。", TextColor.WHITE)));
                 return true;
             }
