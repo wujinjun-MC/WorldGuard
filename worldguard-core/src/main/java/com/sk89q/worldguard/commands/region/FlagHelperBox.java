@@ -84,7 +84,7 @@ class FlagHelperBox extends PaginationBox {
     private boolean monoSpace;
 
     FlagHelperBox(World world, ProtectedRegion region, RegionPermissionModel perms) {
-        super("区域" + region.getId(), "设定,  /rg flags -w \"" + world.getName() + "\" -p %page% " + region.getId());
+        super(region.getId() + "区域的设定", "/rg flags -w \"" + world.getName() + "\" -p %page% " + region.getId());
         this.world = world;
         this.region = region;
         this.perms = perms;
@@ -319,10 +319,10 @@ class FlagHelperBox extends PaginationBox {
         Component valType;
         if (inherited) {
             if (currVal == defVal) {
-                valType = TextComponent.of("继承 & ")
+                valType = TextComponent.of("继承&")
                         .append(TextComponent.of("默认")
                                 .decoration(TextDecoration.UNDERLINED, true))
-                        .append(TextComponent.of(" 值"));
+                        .append(TextComponent.of("值"));
             } else {
                 valType = TextComponent.of("继承值");
             }
@@ -331,7 +331,7 @@ class FlagHelperBox extends PaginationBox {
                 valType = TextComponent.empty()
                         .append(TextComponent.of("默认")
                                 .decoration(TextDecoration.UNDERLINED, true))
-                        .append(TextComponent.of(" 值"));
+                        .append(TextComponent.of("值"));
             } else {
                 valType = null;
             }
