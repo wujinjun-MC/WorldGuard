@@ -163,7 +163,7 @@ public class RegionPrintoutBuilder implements Callable<TextComponent> {
             TextComponent flagText = TextComponent.of(flagString, flagColor)
                     .append(TextComponent.of(String.valueOf(val), useColors ? TextColor.YELLOW : TextColor.WHITE));
             if (perms != null && perms.maySetFlag(region, flag)) {
-                flagText = flagText.hoverEvent(HoverEvent.of(HoverEvent.Action.SHOW_TEXT, TextComponent.of("点击更改设定")))
+                flagText = flagText.hoverEvent(HoverEvent.of(HoverEvent.Action.SHOW_TEXT, TextComponent.of("点击开始修改设定值")))
                         .clickEvent(ClickEvent.of(ClickEvent.Action.SUGGEST_COMMAND,
                                 "/rg flag -w \"" + world + "\" " + region.getId() + " " + flag.getName() + " "));
             }
@@ -179,8 +179,8 @@ public class RegionPrintoutBuilder implements Callable<TextComponent> {
 
         if (perms != null && perms.maySetFlag(region)) {
             builder.append(TextComponent.space())
-                    .append(TextComponent.of("[设定]", useColors ? TextColor.GREEN : TextColor.GRAY)
-                    .hoverEvent(HoverEvent.of(HoverEvent.Action.SHOW_TEXT, TextComponent.of("点击启用设定")))
+                    .append(TextComponent.of("[设定界面]", useColors ? TextColor.GREEN : TextColor.GRAY)
+                    .hoverEvent(HoverEvent.of(HoverEvent.Action.SHOW_TEXT, TextComponent.of("点击进入设定修改界面")))
                     .clickEvent(ClickEvent.of(ClickEvent.Action.RUN_COMMAND, "/rg flags -w \"" + world + "\" " + region.getId())));
         }
     }
@@ -286,17 +286,17 @@ public class RegionPrintoutBuilder implements Callable<TextComponent> {
             }
         }
         if (addCommand != null) {
-            builder.append(TextComponent.space().append(TextComponent.of("[Add]", TextColor.GREEN)
+            builder.append(TextComponent.space().append(TextComponent.of("[添加]", TextColor.GREEN)
                             .hoverEvent(HoverEvent.of(HoverEvent.Action.SHOW_TEXT, TextComponent.of("点击添加玩家或组")))
                             .clickEvent(ClickEvent.of(ClickEvent.Action.SUGGEST_COMMAND,
                                     "/rg " + addCommand + " -w \"" + world + "\" " + region.getId() + " "))));
         }
         if (removeCommand != null && domain.size() > 0) {
-            builder.append(TextComponent.space().append(TextComponent.of("[Rem]", TextColor.RED)
+            builder.append(TextComponent.space().append(TextComponent.of("[删除]", TextColor.RED)
                     .hoverEvent(HoverEvent.of(HoverEvent.Action.SHOW_TEXT, TextComponent.of("点击移除玩家或组")))
                     .clickEvent(ClickEvent.of(ClickEvent.Action.SUGGEST_COMMAND,
                             "/rg " + removeCommand + " -w \"" + world + "\" " + region.getId() + " "))));
-            builder.append(TextComponent.space().append(TextComponent.of("[Clr]", TextColor.RED)
+            builder.append(TextComponent.space().append(TextComponent.of("[清除]", TextColor.RED)
                     .hoverEvent(HoverEvent.of(HoverEvent.Action.SHOW_TEXT, TextComponent.of("点击清除")))
                     .clickEvent(ClickEvent.of(ClickEvent.Action.SUGGEST_COMMAND,
                             "/rg " + removeCommand + " -w \"" + world + "\" -a " + region.getId()))));
