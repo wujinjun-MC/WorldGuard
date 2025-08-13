@@ -2,7 +2,7 @@
     <img src="worldguard-logo.svg" alt="WorldGuard" width="400" /> 
 </h1>
 
-# 如何编译: git clone到本地，右键在本地打开命令提示符/终端窗口，然后执行gradlew.bat
+# 如何编译: git clone到本地，右键在本地打开命令提示符/终端窗口，然后执行 gradlew.bat build
 
 WorldGuard lets you and players guard areas of land against griefers and undesirables, as well as tweak and disable various gameplay features of Minecraft.
 
