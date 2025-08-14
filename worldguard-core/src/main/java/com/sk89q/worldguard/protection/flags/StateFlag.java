@@ -81,23 +81,23 @@ public class StateFlag extends Flag<StateFlag.State> {
     public State parseInput(FlagContext context) throws InvalidFlagFormat {
         String input = context.getUserInput();
 
-        if (input.equalsIgnoreCase("allow")) {
+        if (input.equalsIgnoreCase("allow") || input.equalsIgnoreCase("true") || input.equalsIgnoreCase("允许") || input.equalsIgnoreCase("启用")) {
             return State.ALLOW;
-        } else if (input.equalsIgnoreCase("deny")) {
+        } else if (input.equalsIgnoreCase("deny") || input.equalsIgnoreCase("false") || input.equalsIgnoreCase("禁止") || input.equalsIgnoreCase("禁用")) {
             return State.DENY;
-        } else if (input.equalsIgnoreCase("none")) {
+        } else if (input.equalsIgnoreCase("none") || input.equalsIgnoreCase("默认") || input.equalsIgnoreCase("清空")) {
             return null;
         } else {
-            throw new InvalidFlagFormat("Expected none/allow/deny but got '" + input + "'");
+            throw new InvalidFlagFormat("需要输入值: (allow | true | 允许 | 启用)/(deny | false | 禁止 | 禁用)/(none | 默认 | 清空) ，但输入了 '" + input + "'");
         }
     }
 
     @Override
     public State unmarshal(Object o) {
         String str = o.toString();
-        if (str.equalsIgnoreCase("allow")) {
+        if (str.equalsIgnoreCase("allow") || str.equalsIgnoreCase("true") || str.equalsIgnoreCase("允许") || str.equalsIgnoreCase("启用")) {
             return State.ALLOW;
-        } else if (str.equalsIgnoreCase("deny")) {
+        } else if (str.equalsIgnoreCase("deny") || str.equalsIgnoreCase("false") || str.equalsIgnoreCase("禁止") || str.equalsIgnoreCase("禁用")) {
             return State.DENY;
         } else {
             return null;
@@ -107,9 +107,9 @@ public class StateFlag extends Flag<StateFlag.State> {
     @Override
     public Object marshal(State o) {
         if (o == State.ALLOW) {
-            return "allow";
+            return "启用";
         } else if (o == State.DENY) {
-            return "deny";
+            return "禁用";
         } else {
             return null;
         }

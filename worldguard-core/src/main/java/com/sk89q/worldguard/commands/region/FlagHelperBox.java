@@ -319,7 +319,7 @@ class FlagHelperBox extends PaginationBox {
         Component valType;
         if (inherited) {
             if (currVal == defVal) {
-                valType = TextComponent.of("继承&")
+                valType = TextComponent.of("继承值或使用")
                         .append(TextComponent.of("默认")
                                 .decoration(TextDecoration.UNDERLINED, true))
                         .append(TextComponent.of("值"));
@@ -328,7 +328,7 @@ class FlagHelperBox extends PaginationBox {
             }
         } else {
             if (currVal == defVal) {
-                valType = TextComponent.empty()
+                valType = TextComponent.of("正在使用")
                         .append(TextComponent.of("默认")
                                 .decoration(TextDecoration.UNDERLINED, true))
                         .append(TextComponent.of("值"));
@@ -390,7 +390,7 @@ class FlagHelperBox extends PaginationBox {
         if (currVal == null) {
             final Location defVal = flag.getDefault();
             if (defVal == null) {
-                appendValueText(builder, flag, "取消设定地点", null);
+                appendValueText(builder, flag, "未设定地点", null);
             } else {
                 appendValueText(builder, flag, defVal.toString(), TextComponent.of("默认值:")
                         .append(TextComponent.newline()).append(TextComponent.of(defVal.toString())));
