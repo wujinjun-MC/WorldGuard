@@ -419,7 +419,7 @@ class FlagHelperBox extends PaginationBox {
             choices.addAll(Arrays.asList(suggested));
         }
         //noinspection unchecked
-        appendValueChoices(builder, flag, (Iterator<V>) choices.iterator(), choices.isEmpty() ? "清除数值" : "[自定义]");
+        appendValueChoices(builder, flag, (Iterator<V>) choices.iterator(), choices.isEmpty() ? "[未设置]" : "[自定义]");
     }
 
     private void appendStringFlagValue(TextComponent.Builder builder, StringFlag flag) {
@@ -430,7 +430,7 @@ class FlagHelperBox extends PaginationBox {
         if (currVal == null) {
             final String defVal = flag.getDefault();
             if (defVal == null) {
-                appendValueText(builder, flag, "清除字符串", null);
+                appendValueText(builder, flag, "[未设置]", null);
             } else {
                 final TextComponent defComp = LegacyComponentSerializer.INSTANCE.deserialize(defVal);
                 String display = reduceToText(defComp);
