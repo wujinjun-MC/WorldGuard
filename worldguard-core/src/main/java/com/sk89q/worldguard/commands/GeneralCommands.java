@@ -212,7 +212,7 @@ public class GeneralCommands {
         }
     }
     
-    @Command(aliases = {"locate"}, usage = "[player]", desc = "Locate a player", max = 1)
+    @Command(aliases = {"wglocate"}, usage = "[player]", desc = "Locate a player", max = 1)
     @CommandPermissions({"worldguard.locate"})
     public void locate(CommandContext args, Actor sender) throws CommandException {
         LocalPlayer player = worldGuard.checkPlayer(sender);
@@ -220,12 +220,12 @@ public class GeneralCommands {
         if (args.argsLength() == 0) {
             player.setCompassTarget(new Location(player.getWorld(), player.getWorld().getSpawnPosition().toVector3()));
             
-            sender.print("Compass reset to spawn.");
+            sender.print("指南针现在指向出生点");
         } else {
             LocalPlayer target = worldGuard.getPlatform().getMatcher().matchSinglePlayer(sender, args.getString(0));
             player.setCompassTarget(target.getLocation());
             
-            sender.print("Compass repointed.");
+            sender.print("指南针现在指向玩家或坐标");
         }
     }
     

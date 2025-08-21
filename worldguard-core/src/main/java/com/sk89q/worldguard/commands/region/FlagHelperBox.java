@@ -328,7 +328,7 @@ class FlagHelperBox extends PaginationBox {
             }
         } else {
             if (currVal == defVal) {
-                valType = TextComponent.of("正在使用")
+                valType = TextComponent.of("使用")
                         .append(TextComponent.of("默认")
                                 .decoration(TextDecoration.UNDERLINED, true))
                         .append(TextComponent.of("值"));
