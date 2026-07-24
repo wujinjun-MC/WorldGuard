@@ -4,6 +4,9 @@
 
 # 如何编译: git clone到本地，右键在本地打开命令提示符/终端窗口，然后执行 gradlew.bat build
 
+> [!NOTE]
+> 2026-07-24: 正在为 [Better Cave Worlds](https://github.com/klinbee/Better-Cave-Worlds) 和 [Better Cave Dimensions](https://github.com/wujinjun-MC/Better-Cave-Dimensions/tree/main) 制作新版本适配 ([Better Cave Worlds Updated](https://github.com/wujinjun-MC/Better-Cave-Dimensions/tree/Better-Cave-Worlds-updated))，完成后将继续 WorldGuard 翻译。暂时合并上游更新，请先测试。
+
 WorldGuard lets you and players guard areas of land against griefers and undesirables, as well as tweak and disable various gameplay features of Minecraft.
 
 * Block creeper and wither block damage, falling damage, etc.
