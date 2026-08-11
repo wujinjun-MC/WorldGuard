@@ -2,10 +2,9 @@
     <img src="worldguard-logo.svg" alt="WorldGuard" width="400" /> 
 </h1>
 
-# 如何编译: git clone到本地，右键在本地打开命令提示符/终端窗口，然后执行 gradlew.bat build
-
-> [!NOTE]
-> 2026-07-24: 正在为 [Better Cave Worlds](https://github.com/klinbee/Better-Cave-Worlds) 和 [Better Cave Dimensions](https://github.com/wujinjun-MC/Better-Cave-Dimensions/tree/main) 制作新版本适配 ([Better Cave Worlds Updated](https://github.com/wujinjun-MC/Better-Cave-Dimensions/tree/Better-Cave-Worlds-updated))，完成后将继续 WorldGuard 翻译。暂时合并上游更新，请先测试。
+# 这是 WorldGuard 手动汉化版，非AI机翻
+# ~~如何编译: git clone到本地，右键在本地打开命令提示符/终端窗口，然后执行 gradlew.bat build~~ (上游已添加 Github Actions 自动编译)
+# 下载: 从[Actions](https://github.com/wujinjun-MC/WorldGuard/actions)选择最新运行结果，下载 `WorldGuard Bukkit Plugin built by *` 压缩包，解压 `worldguard-bukkit-<版本号>-SNAPSHOT.jar`
 
 WorldGuard lets you and players guard areas of land against griefers and undesirables, as well as tweak and disable various gameplay features of Minecraft.
 

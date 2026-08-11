@@ -46,3 +46,9 @@ jobs:
         with:
           name: logs for ${{ matrix.os }}
           path: '**/*.log'
+
+      - uses: actions/upload-artifact@v6
+        name: Archive WorldGuard Bukkit Plugin
+        with:
+          name: WorldGuard Bukkit Plugin built by ${{ matrix.os }}
+          path: 'worldguard-bukkit/build/libs/worldguard-bukkit-*-SNAPSHOT.jar'
