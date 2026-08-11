@@ -51,4 +51,4 @@ jobs:
         name: Archive WorldGuard Bukkit Plugin
         with:
           name: WorldGuard Bukkit Plugin built by ${{ matrix.os }}
-          path: 'worldguard-bukkit/build/libs/worldguard-bukkit-*-SNAPSHOT.jar'
+          path: 'worldguard-bukkit/build/libs/worldguard-bukkit-*-dist.jar'
